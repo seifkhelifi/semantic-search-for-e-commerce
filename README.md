@@ -94,17 +94,6 @@ The system consists of:
 
 ## Example Queries
 
-1. Search for floral-themed products:
-   ```json
-   {
-     "query": "products with flower designs"
-   }
-   ```
+Demo on this link : https://drive.google.com/file/d/1S59zps1S0pkXq8kmPwOV7y4WjFJj_8AX/view?usp=sharing
 
-2. Search for gold jewelry:
-   ```json
-   {
-     "query": "gold necklaces and bracelets"
-   }
-   ```
 
