@@ -1,99 +1,151 @@
-# Jewelry E-Commerce Search Engine
+## 🧠 Semantic Search Engine using BERT and Elasticsearch
 
-This project implements a semantic search engine for a jewelry e-commerce dataset using Elasticsearch and the `all-mpnet-base-v2` sentence transformer model. The system allows users to search for products using natural language queries, with results ranked by semantic similarity to the query.
-
-## Project Overview
-
-The system consists of:
-1. Data preparation and vectorization pipeline
-2. Elasticsearch index configuration for vector search
-3. Flask API for interacting with the search engine
-
-## Key Features
-
-- **Semantic Search**: Finds products based on meaning rather than just keyword matching
-- **Vector Embeddings**: Uses the `all-mpnet-base-v2` model to convert product descriptions into 768-dimensional vectors
-- **Scalable Search**: Leverages Elasticsearch's kNN capabilities for efficient similarity search
-- **REST API**: Provides easy integration with frontend applications
-
-## Example Queries
+This project implements a **semantic search engine** for e-commerce jewelry products using **BERT embeddings** and **Elasticsearch's KNN search**. The system allows searching for products based on meaning rather than exact keyword matches, providing a smarter and more intuitive search experience.
 
 Demo on this link : https://drive.google.com/file/d/1S59zps1S0pkXq8kmPwOV7y4WjFJj_8AX/view?usp=sharing
 
-## Technical Components
 
-### Data Processing
-- Loads jewelry product data from CSV
-- Handles missing values
-- Generates vector embeddings for product descriptions
-- Indexes data in Elasticsearch with proper mapping for vector fields
+---
 
-### Search Engine
-- Elasticsearch 8.x with kNN search capabilities
-- Custom index mapping optimized for vector search
-- Support for semantic similarity ranking
+## 🚀 Features
 
-### API Endpoints
-- Flask-based REST API for search operations
-- Accepts natural language queries
-- Returns semantically relevant products
+- 🔍 Semantic search with Sentence-BERT (`all-mpnet-base-v2`)
+- 🔎 Vector similarity search using Elasticsearch 8.x dense vector fields
+- 🧾 Flask-based API to serve search results
+- 🔗 Supports CORS for frontend consumption
+- 🧠 Preprocessing and ingestion of product descriptions into vector embeddings
+- 📁 Elasticsearch index with vector and metadata fields
 
-## Setup Instructions
+---
 
-### Prerequisites
-- Python 3.8+
-- Elasticsearch 8.x
-- Elasticsearch Python client
-- SentenceTransformers library
-- Flask
+## 📦 Folder Structure
 
-### Installation
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```
 
-3. Set up Elasticsearch:
-   - Configure Elasticsearch with security settings
-   - Place your CA certificate in the specified location
+.
+├── search\_api.py                # Flask API for semantic search
+├── indexMappingJewelery.py     # Mapping/schema for Elasticsearch index
+├── ingest\_notebook.ipynb       # Ingest data and build vector embeddings
+├── dataset/                    # Contains the CSV dataset
+├── requirements.txt            # Python dependencies
+└── README.md                   # Project documentation
 
-4. Prepare your dataset:
-   - Place your CSV file in the `dataset` folder
-   - Update the file path in the code if needed
+````
 
-### Running the Application
-1. Start the Flask API:
-   ```bash
-   python app.py
-   ```
+---
 
-2. The API will be available at `http://localhost:5000`
+## 🔧 Setup Instructions
 
-## API Usage
+### 1. Clone the repository
 
-### Search Endpoint
-- **URL**: `/search`
-- **Method**: POST
-- **Request Body**:
-  ```json
-  {
-    "query": "your search query"
-  }
-  ```
+```bash
+git clone https://github.com/your-username/semantic-search-engine.git
+cd semantic-search-engine
+````
 
-- **Response**:
-  ```json
-  {
-    "results": [
-      {
-        "product_name": "...",
-        "description": "...",
-        "score": 0.95
-      },
-      ...
-    ]
-  }
-  ```
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Ensure Elasticsearch is running
+
+* Make sure Elasticsearch 8.x is installed and running locally.
+* Provide your credentials and certificate path inside `search_api.py` and ingestion notebook.
+
+### 4. Ingest data into Elasticsearch
+
+Run the `ingest_notebook.ipynb` notebook to:
+
+* Load product data from CSV
+* Generate BERT embeddings for descriptions
+* Create the Elasticsearch index
+* Index the documents with metadata and vector fields
+
+### 5. Run the Flask API
+
+```bash
+python search_api.py
+```
+
+---
+
+## 🔄 API Endpoint
+
+### POST `/search`
+
+**Request Body:**
+
+```json
+{
+  "queryText": "floral necklace"
+}
+```
+
+**Response:**
+
+```json
+{
+  "products": [
+    {
+      "name": "Rose Pendant Necklace",
+      "company": "Elegant Bloom",
+      "category": "Necklaces",
+      "colour": "Gold",
+      "description": "A delicate floral-themed pendant...",
+      "image": "...",
+      "price": 99.99,
+      "product_url": "https://..."
+    },
+    ...
+  ]
+}
+```
+
+---
+
+## 🧠 Technology Stack
+
+* **Elasticsearch 8.x**
+* **Flask**
+* **SentenceTransformers** (`all-mpnet-base-v2`)
+* **Pandas**
+* **Python 3.8+**
+
+---
+
+## 📌 Notes
+
+* Ensure `elasticsearch` is configured with KNN enabled.
+* Sensitive credentials like certificates and passwords are currently hardcoded; consider securing them using environment variables or secret managers.
+
+---
+
+## 📜 License
+
+This project is open-source under the MIT License.
+
+````
+
+---
+
+### ✅ `requirements.txt`
+
+```txt
+Flask==2.3.3
+flask-cors==4.0.0
+elasticsearch==8.12.1
+pandas==2.2.2
+sentence-transformers==2.6.1
+scikit-learn==1.4.2
+numpy==1.26.4
+certifi==2024.2.2
+````
+
+---
+
+Let me know if you want to include Docker support, deployment instructions (e.g., Render, Heroku), or a frontend integration section.
+
 
 
