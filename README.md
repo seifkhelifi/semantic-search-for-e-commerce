@@ -126,26 +126,8 @@ python search_api.py
 
 This project is open-source under the MIT License.
 
-````
 
----
 
-### ✅ `requirements.txt`
-
-```txt
-Flask==2.3.3
-flask-cors==4.0.0
-elasticsearch==8.12.1
-pandas==2.2.2
-sentence-transformers==2.6.1
-scikit-learn==1.4.2
-numpy==1.26.4
-certifi==2024.2.2
-````
-
----
-
-Let me know if you want to include Docker support, deployment instructions (e.g., Render, Heroku), or a frontend integration section.
 
 
 
