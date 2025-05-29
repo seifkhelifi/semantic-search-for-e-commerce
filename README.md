@@ -10,7 +10,7 @@ Demo on this link : https://drive.google.com/file/d/1S59zps1S0pkXq8kmPwOV7y4WjFJ
 ## 🚀 Features
 
 - 🔍 Semantic search with Sentence-BERT (`all-mpnet-base-v2`)
-- 🔎 Vector similarity search using Elasticsearch 8.x dense vector fields
+- 🔎 Vector similarity search using Elasticsearch 8.x and l2_norm 
 - 🧾 Flask-based API to serve search results
 - 🔗 Supports CORS for frontend consumption
 - 🧠 Preprocessing and ingestion of product descriptions into vector embeddings
